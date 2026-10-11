@@ -46,7 +46,7 @@ class MicrophoneRecognizer(BaseRecognizer):
     def process_recording(self):
         print("* recording")
         data = self.stream.read(self.chunksize)
-        nums = np.fromstring(data, np.int16)
+        nums = np.frombuffer(data, np.int16)
         # print(nums)
         for c in range(self.channels):
             self.data[c].extend(nums[c::self.channels])
